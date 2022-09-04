@@ -1,0 +1,75 @@
+<form (ngSubmit)= "onSubmit(f)" #f="ngForm">
+  <ul class="list-group" style="margin: auto; width: 40%; padding: 10px; background-color: #4682B4;">
+    <li class="list-group-item">
+      <h3 style="text-align: center; font-family:Verdana, Geneva, Tahoma, sans-serif;">
+        <b>Add Contact</b></h3>
+      <hr>
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input
+            type="text"
+            id="name"
+            class="form-control"
+            ngModel
+            name="name"
+            required
+            #name="ngModel"
+            >
+            <span class="help-block" *ngIf="!name.valid && name.touched" style="color: red;"> Name is required</span>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+          type="text"
+          id="username"
+          class="form-control"
+          ngModel
+          name="username"
+          required
+          #username="ngModel"
+          >
+          <span class="help-block" *ngIf="!username.valid && username.touched" style="color: red;"> Username is required</span>
+      </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+          type="email"
+          id="amount"
+          class="form-control"
+          ngModel
+          name="email"
+          email
+          required
+          #email="ngModel"
+          >
+          <span class="help-block" *ngIf="!email.valid && email.touched" style="color: red;"> Invalid Email Address</span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Contact Number</label>
+          <input
+          type="number"
+          id="phone"
+          class="form-control"
+          ngModel
+          name="phone"
+          required
+          #phone="ngModel"
+          >
+          <span class="help-block" *ngIf="!phone.valid && phone.touched" style="color: red;"> Contact Number is required</span>
+
+      </div>
+
+      <div class="row" style="text-align: center;">
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="!f.valid">{{editMode ? 'Update':'Add'}}</button>
+        <button class="btn btn-warning" type="button" (click)="onClear()">Clear</button>
+        <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+    </li>
+  </ul>
+</form>

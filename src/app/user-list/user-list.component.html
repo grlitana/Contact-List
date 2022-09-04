@@ -1,0 +1,41 @@
+
+  <div class="row" style="text-align: center;">
+    <hr>
+    <button class="button" (click)="onAddContact()" *ngIf="!createMode">
+      <span >Add Contact</span>
+    </button>
+  </div>
+
+  <app-user-form *ngIf='createMode' (createMode)="onCancel($event)"></app-user-form>
+
+  <hr>
+
+<div class="container">
+  <div class="col">
+    <table>
+      <tr>
+        <th style="width: 1%">ID</th>
+        <th style="width: 18%">Name</th>
+        <th style="width: 18%">Username</th>
+        <th style="width: 15%">Email Address</th>
+        <th style="width: 20%">Contact No.</th>
+        <th style="width: 25%">Actions</th>
+      </tr>
+      <tr *ngFor="let contact of contacts ; let i=index">
+        <td> {{i+1}} </td>
+        <td> {{contact.name}} </td>
+        <td> {{contact.username}} </td>
+        <td> {{contact.email}} </td>
+        <td> {{contact.phone}} </td>
+        <td style="text-align: center;">
+          <button class="btn btn-primary" [routerLink]='i+1' routerLinkActive="active">View</button>
+          <button class="btn btn-warning" (click)="onUpdate(i)" >Update</button>
+          <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
+
+
