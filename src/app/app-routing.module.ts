@@ -8,12 +8,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ContactsResolverService } from './contacts-resolver.service';
 
 const routes: Routes = [
-  { path: 'Contact-List', redirectTo: 'contacts', pathMatch: 'full'},
-  { path: 'contacts', component: UserListComponent, children:[
+  { path: 'Contact-List', component: UserListComponent, children:[
     // { path: '', component: UserListComponent},
     // { path: ':id', component: UserDetailsComponent, resolve: [ContactsResolverService]}, // we used :id as a dynamic parameter
   ]},
-  { path: 'contacts/:id', component: UserDetailsComponent, resolve: [ContactsResolverService]}, // we used :id as a dynamic parameter
+  { path: 'Contact-List/:id', component: UserDetailsComponent, resolve: [ContactsResolverService]}, // we used :id as a dynamic parameter
   { path: '**', component: PageNotFoundComponent },
   ];
 
